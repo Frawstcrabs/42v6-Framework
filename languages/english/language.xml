@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!DOCTYPE language SYSTEM "langformat.dtd" [
+  <!ENTITY call "&#xF000;">
+  <!ENTITY defaultcall "&#xF001;">
+  <!ENTITY zwsp "&#x200B;">
+  <!ENTITY site "">
+]>
+
+<language author="N/A" id="english" name="English" site-link="">
+  <description>
+    A bot created using the 42v6 framework, which also hasn't updated its language files.
+    You can find the github for this framework here: https://github.com/Frawstcrabs/42v6-Framework
+    Feel free to check out the bot this framework was originally created for here: https://42.rockett.space/
+  </description>
+  <output>
+
+    <!-- Error Messages -->
+    <choice id="error_ratelimit">
+      <item weight="0.8">You have reached the ratelimit for this command. Please try again later.</item>
+      <item weight="0.15">There is a ratelimit on this command that you have reached. Please stop as the workload physically hurts me.</item>
+      <item weight="0.05">Cool down please. I'm being worked to the bone and the spam doesn't help... You were ratelimited by the way, come back later.</item>
+    </choice>
+    <choice id="error_toggle">
+      <item weight="0.95">This command has been disabled by the guild. For details, check `&call;toggle`</item>
+      <item weight="0.05">Unless you're a mod, you're not using this command. Please direct any complaints to your administration and point them to `&call;toggle`</item>
+    </choice>
+    <line id="error_banned_user">You have been blacklisted from using my functions.</line>
+    <line id="error_banned_server">Your server has been blacklisted. Sorry for the inconvenience.</line>
+    <line id="error_bot_banned">I cannot run this command as you have been botbanned on this server.</line>
+    <choice id="error_authority">
+      <item>There is an authority check on this command: `{}`</item>
+      <item>You are not authorised to use this command: `{}`</item>
+      <item>I cannot complete this command. You require `{}`</item>
+      <item>You need `{}` to continue.</item>
+    </choice>
+
+    <!-- Permissions -->
+    <line id="permission_owner">This command is only usable by my developers.</line>
+    <line id="permission_buds">This command is only usable by a select group of close friends.</line>
+    <line id="permission_patrons">This command is only usable by Patreon supporters. &site;patreon.html</line>
+    <line id="permission_pm">This command can only be used in private chat.</line>
+    <line id="permission_no_pm">This command cannot be used in private chat.</line>
+    <line id="permission_guild_owner">Only the server owner can use this command.</line>
+    <line id="permission_guild_admin">You must have manage roles for the server to use this command.</line>
+    <line id="permission_guild_manager">You must have manage channels for the server to use this command.</line>
+    <line id="permission_channel_manager">You must have manage channels for this channel to use the command.</line>
+    <line id="permission_bot_admin">You must be a server admin or have a role called "best friend" to use this command.</line>
+    <line id="permission_guild_mod">You must have manage messages for the server to use this command.</line>
+    <line id="permission_channel_mod">You must have manage messages for the channel to use this command.</line>
+    <line id="permission_bot_mod">You must be a server mod or have a role called "friend" to use this command.</line>
+    <line id="permission_shitposter">Both you and I need a role called "shitpost" or "shitpost machine" for you to use this command.</line>
+
+    <!-- Pagination -->
+    <line id="paginator_closed">Window Closed.</line>
+    <line id="paginator_footer">Page {}/{}</line>
+    <line id="paginator_paging_title">Pages:</line>
+
+    <!-- Error Handling -->
+    <line id="ARG_ERROR">
+      It appears an error occurred while processing your command. Please consult `&call;help` for more information.
+    </line>
+    <line id="ARG_MISSING">
+      It appears an argument was missing from your command. Please consult `&call;help` for more information.
+    </line>
+    <line id="INT_RESOLVE_error">
+      An improper number was passed in your command. Please note this command only take whole numbers.
+    </line>
+    <line id="FLOAT_RESOLVE_error">
+      An improper number was passed in your command.
+    </line>
+    <line id="MEMBER_RESOLVE_list_footer">
+      Please enter only the number of the entry you want.
+    </line>
+    <line id="MEMBER_RESOLVE_list_too_long">
+      The list of possible members was too long for me to post. Consider using a mention or discord tag instead.
+    </line>
+    <line id="MEMBER_RESOLVE_not_found">
+      I couldn't find the member you wanted. Consider using a mention or discord tag instead.
+    </line>
+
+  </output>
+
+
+
+</language>

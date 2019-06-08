@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE extension SYSTEM "langformat.dtd" [
+  <!ENTITY call "&#xF000;">
+  <!ENTITY defaultcall "&#xF001;">
+  <!ENTITY zwsp "&#x200B;">
+  <!ENTITY site "">
+]>
+
+<extension id="english" site-link="">
+  <documentation>
+
+  </documentation>
+
+  <command id="remove" name="remove" alias="delete">
+    <parenthelpsection>Deletes messages from the chat.</parenthelpsection>
+    <description>
+      Deletes messages from the chat.
+      'limit' in all commands is the number of messages searched while deleting, not the number deleted.
+    </description>
+    <documentation>
+      Deletes messages that match a certain criteria.
+
+      In all subcommands, the `limit` parameter determines how much chat history will be searched when deciding on what to delete.
+    </documentation>
+
+    <output>
+      <line id="invalid_subcommand">I do not know what you want me to remove. Use `&call;help command`</line>
+      <line id="no_delete_permission">I require Manage Messages to delete messages.</line>
+      <line id="no_logs_permission">I require Read Message History to use this command.</line>
+      <line id="old_messages">I cannot delete messages older than 2 weeks.</line>
+      <pluralgroup id="success">
+        <plural value="1">I have deleted one message.</plural>
+        <plural value="default">I have deleted {0} messages.</plural>
+      </pluralgroup>
+    </output>
+
+    <command id="user" name="user" alias="users from">
+      <parenthelpsection args="'@member' [['@member' ...] 'limit']">Deletes messages by a user.</parenthelpsection>
+      <description>Deletes messages by a user or set of users.</description>
+      <helpsection args="'@member' [['@member' ...] 'limit']">Deletes messages from one or many users.</helpsection>
+      <documentation>
+        Deletes messages from one or a group of users. Good for purging problematic conversations.
+        `limit` must be specified as the last argument
+        `@member` is the name, ID, Discord Tag, nickname or mention of the target user(s).
+      </documentation>
+
+      <output>
+        <line id="no_target">I cannot find the user(s) you want to delete messages from.</line>
+      </output>
+    </command>
+
+    <!-- Insert more subcommands here -->
+  </command>
+</extension>

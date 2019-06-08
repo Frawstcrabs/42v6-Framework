@@ -1,0 +1,49 @@
+<!ELEMENT language (description, helpsection*, documentation?, output, command*)>
+<!ATTLIST language id CDATA #REQUIRED>
+<!ATTLIST language author CDATA #IMPLIED>
+<!ATTLIST language name CDATA #IMPLIED>
+<!ATTLIST language site-link CDATA #REQUIRED>
+
+<!ELEMENT extension (documentation?, command+)>
+<!ATTLIST extension id CDATA #REQUIRED>
+<!ATTLIST extension site-link CDATA #REQUIRED>
+
+<!ELEMENT command (parenthelpsection?, description, helpsection*, documentation?, output, command*)>
+<!ATTLIST command id CDATA #REQUIRED>
+<!ATTLIST command name CDATA #REQUIRED>
+<!ATTLIST command alias CDATA #IMPLIED>
+<!ATTLIST command hidden (true) #IMPLIED>
+
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT helpsection (#PCDATA)>
+<!ATTLIST helpsection args CDATA #IMPLIED>
+<!ELEMENT documentation (#PCDATA)>
+
+<!ELEMENT parenthelpsection (#PCDATA)>
+<!ATTLIST parenthelpsection args CDATA #IMPLIED>
+
+<!ELEMENT output ((line|list|dict|choice|pluralgroup)*)>
+
+<!ELEMENT line (#PCDATA)>
+<!ATTLIST line id CDATA #IMPLIED>
+<!ELEMENT list ((line|list|dict|choice|nonetype)+)>
+<!ATTLIST list id CDATA #IMPLIED>
+<!ELEMENT dict (entry+)>
+<!ATTLIST dict id CDATA #IMPLIED>
+<!ELEMENT entry ((line|list|dict|choice|nonetype)+)>
+<!ATTLIST entry name CDATA #REQUIRED>
+
+<!ELEMENT nonetype EMPTY>
+
+<!ELEMENT choice (item+)>
+<!ATTLIST choice id CDATA #IMPLIED>
+<!ELEMENT item (#PCDATA)>
+<!ATTLIST item weight CDATA #IMPLIED>
+
+<!ELEMENT pluralgroup (plural+)>
+<!ATTLIST pluralgroup id CDATA #REQUIRED>
+<!ELEMENT plural (#PCDATA)>
+<!ATTLIST plural value CDATA #IMPLIED>
+<!ATTLIST plural lower CDATA #IMPLIED>
+<!ATTLIST plural upper CDATA #IMPLIED>
+

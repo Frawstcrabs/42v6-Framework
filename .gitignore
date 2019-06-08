@@ -1,0 +1,8 @@
+.spyproject/
+.idea/
+__pycache__/
+*.py[cod]
+env/
+files/
+config.json
+run.sh

@@ -1,0 +1,4 @@
+discord.py>=1.1.0
+emoji
+aiomysql
+cachetools

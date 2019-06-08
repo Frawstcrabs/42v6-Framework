@@ -1,0 +1,248 @@
+<?xml version="1.0"?>
+<!DOCTYPE extension SYSTEM "langformat.dtd" [
+  <!ENTITY call "&#xF000;">
+  <!ENTITY defaultcall "&#xF001;">
+  <!ENTITY zwsp "&#x200B;">
+  <!ENTITY site "">
+]>
+
+<extension id="english" site-link="">
+  <documentation>
+    These commands are all ones for managing function that are built into the framework.
+  </documentation>
+
+  <command id="quit" name="quit">
+    <description>Kills my connection.</description>
+    <output />
+  </command>
+
+  <command id="help" name="help" alias="h ?">
+    <parenthelpsection>Fetches inline help about my commands.</parenthelpsection>
+    <description>
+      Fetches inline help about my commands and their subcommands.
+    </description>
+    <helpsection args="'command'">Fetches help on a command</helpsection>
+    <helpsection args="'command' 'subcommand' ...">Fetches help for a subcommand</helpsection>
+    <!--<helpsection args="'category'">Gets all help for a categories commands.</helpsection>-->
+    <documentation>
+      This is the help command, which can be used to get a comprehensive list of *almost* all of my commands.
+      It can also be used to get detailed help on a particular topic.
+    </documentation>
+
+    <output>
+      <line id="command_not_found">I could not find a command called `{0}`...</line>
+      <line id="subcommand_not_found">This subcommand doesn't exist.</line>
+      <line id="link_header">[Online Help]</line>
+      <line id="usage_header">Usage</line>
+      <line id="subcommand_header">Subcommands</line>
+      <line id="info_count">Total commands:</line>
+      <line id="info_sub_count">Total subcommands:</line>
+      <line id="undefined">No help was given for this command.</line>
+
+      <line id="bot_help_title">42v6 Framework-based Bot</line>
+
+      <line id="auth_header">Requires the following</line>
+
+      <line id="rl_header">Command Ratelimit</line>
+      <pluralgroup id="rl_invocations">
+        <plural value="1">{} invocation</plural>
+        <plural value="default">{} invocations</plural>
+      </pluralgroup>
+      <pluralgroup id="rl_seconds">
+        <plural value="1">per second</plural>
+        <plural value="default">per {} seconds</plural>
+      </pluralgroup>
+      <pluralgroup id="rl_minutes">
+        <plural value="1">per minute</plural>
+        <plural value="default">per {} minutes</plural>
+      </pluralgroup>
+
+      <line id="toggle_header">Disabled by server</line>
+      <line id="toggle_body">Only bot-mods can use this.</line>
+    </output>
+  </command>
+
+  <command id="hello" name="hello" alias="hi">
+    <parenthelpsection>Makes me ping.</parenthelpsection>
+    <description>
+      A simple ping command, useful for seeing if I'm awake.
+    </description>
+    <documentation>
+      Makes me send a hello message and respond with the time that message took to process.
+    </documentation>
+
+    <output>
+      <line id="message">
+        Hello! I am a bot written using the 42v6 framework, designed by squaswin and Frawst.
+        You should probably tell someone to change this message.
+        While I'm here, feel free to check out the bot this framework was made for at https://42.rockett.space/.
+        You can also find the framework itself at https://github.com/Frawstcrabs/42v6-Framework.
+      </line>
+      <line id="ping">(Hold on)</line>
+      <line id="pong">(Message response: {}ms)</line>
+    </output>
+  </command>
+
+  <command id="alias" name="alias">
+    <parenthelpsection>Changes the command invokers.</parenthelpsection>
+    <description>
+      Changes my command invoker, or toggles the default invoker (&defaultcall;)
+    </description>
+    <documentation>
+      Adds/removes different invokers (e.g. "&defaultcall;") for my commands in a guild,
+      allowing me to resolve any conflicts with other bots.
+    </documentation>
+
+    <output>
+      <line id="alias_list">The current invokers in this guild are: {}.</line>
+      <line id="add_alias">I have added the invoker "{}".</line>
+      <line id="remove_alias">I have removed the invoker "{}".</line>
+      <line id="no_pings">Invokers are not allowed to contains mentions.</line>
+    </output>
+  </command>
+
+  <command id="language" name="language" alias="lang">
+    <parenthelpsection>Changes what language I speak.</parenthelpsection>
+    <description>Changes the language I speak.</description>
+    <documentation>
+      Sets the language that I will speak. This can be set on a per-guild or
+      per-channel basis.
+    </documentation>
+
+    <output>
+      <line id="lang_list">
+        Please select a language for me to speak in. The current options are:
+        {}
+        Use the ID in the brackets to select the language, e.g. `&call;language english`.
+      </line>
+      <line id="lang_list_entry">- {name} ({id})</line>
+      <line id="invalid_lang">
+        I couldn't understand the language you wanted. Please use `&call;language` to find the list of available languages.
+      </line>
+      <line id="success_guild">I will now respond in English in this guild.</line>
+      <line id="success_channel">I will now respond in English in this channel.</line>
+    </output>
+  </command>
+
+  <command id="botban" name="botban" alias="botunban">
+    <parenthelpsection>Prevents someone from using my commands.</parenthelpsection>
+    <description>
+      Botbans or un-botbans a member to prevent them using commands.
+      This command is a toggle.
+    </description>
+    <helpsection>Lists the botbans on the server</helpsection>
+    <helpsection args="'@member'">Botbans or un-botbans the member described by @member</helpsection>
+
+    <documentation>
+      Botbans or un-botbans a member to prevent them from being able to use any commands.
+      Note: This only prevents command usage, it does not stop members from interacting with 42 completely.
+      They will still be picked up by autoresponses, modlog posts and other background tasks.
+    </documentation>
+
+    <output>
+      <line id="no_botbanned_users">There are no botbanned users in this guild.</line>
+      <line id="target_owner">I cannot botban the owner of the server.</line>
+      <line id="target_bot_owner">I cannot botban one of my authors. They would be able to ignore it anyway.</line>
+      <line id="target_admin">I cannot botban a server administrator.</line>
+      <line id="success_ban">I have botbanned that member. They will no longer be able to access my commands.</line>
+      <line id="success_unban">I have un-botbanned that member. They are free to use commands again.</line>
+    </output>
+  </command>
+
+  <command id="toggle" name="toggle" alias="disable">
+    <parenthelpsection>Toggles commands and subcommands.</parenthelpsection>
+    <description>
+      Disables or enables commands or subcommands.
+      You can specify subcommands by separating the command path with a dot (.)
+      For example `&call;toggle tag.create` will disable the &call;tag create subcommand.
+
+      You can select multiple elements by using an asterisk (\*)
+      For example `&call;toggle tag.*` will disable all subcommands of tag, but not &call;tag itself.
+
+      You can specify multiple elements at once, and they will be toggled in order
+      For example `&call;toggle tag.* tag.create tag.edit` will disable every subcommand of tag except create and edit.
+
+      If a command is disabled, all its subcommands will also be disabled.
+      Members with the bot-mod permission can use disabled commands.
+    </description>
+    <helpsection args="'path' ...">Toggles, in order, the given paths.</helpsection>
+    <documentation>
+      Disables or enables commands and subcommands.
+
+      The toggle command takes a list of "command path" objects, which are basically just commands, except instead of the subcommand names being separated by spaces, they're separated by dots.
+      For example, the command `&defaultcall;tag create` can be toggled with the path `tag.create`
+
+      You can also use wildcards in command paths in order to affect every matching subcommand.
+      for example, the path `tag.*` will affect every subcommand of tag *without* affecting `&defaultcall;tag` itself.
+      Using a path of a single `*` will affect every command in 42. Useful for turning everything back on again.
+
+      If a command has been disabled, all its subcommands are also inaccessible.
+      Users with bot-mod permissions can use disabled commands.
+    </documentation>
+
+    <output>
+      <line id="TOGGLE_PATH_error">
+        The path you gave me was not one for a valid command.
+        A path should be the full command but separated with dots. e.g. `&call;tag create` would be "tag.create"
+      </line>
+      <line id="commands_ARG_MISSING">Please specify a command to toggle. See `&call;help toggle` for more information.</line>
+
+      <pluralgroup id="success">
+        <plural value="1">I have toggled the {} command.</plural>
+        <plural value="default">
+          I have toggled these commands: {}
+          You can use `&call;toggle list` to see which commands are disabled.
+        </plural>
+      </pluralgroup>
+    </output>
+
+    <command id="enable" name="enable">
+      <parenthelpsection args="'path' ...">Forces all the given keys to be enabled.</parenthelpsection>
+      <description>
+        Forces the given list of keys to be enabled.
+      </description>
+      <helpsection args="'path' ...">Enables the given paths</helpsection>
+
+      <output>
+        <pluralgroup id="success">
+          <plural value="1">I have enabled the {} command. It will be available to all users.</plural>
+          <plural value="default">
+            I have enabled these commands: {}
+            They are now available for all users.
+          </plural>
+        </pluralgroup>
+      </output>
+    </command>
+
+    <command id="disable" name="disable">
+      <parenthelpsection args="'path' ...">Forces all the given keys to be disabled.</parenthelpsection>
+      <description>
+        Forces the given list of keys to be disabled.
+      </description>
+      <helpsection args="'path' ...">Disables the given paths</helpsection>
+
+      <output>
+        <pluralgroup id="success">
+          <plural value="1">I have disabled the {} command. It can no longer be used by non bot-mod members.</plural>
+          <plural value="default">
+            I have disabled these commands: {}
+            They can no longer be used by non bot-mod members.
+          </plural>
+        </pluralgroup>
+      </output>
+    </command>
+
+    <command id="list" name="list">
+      <parenthelpsection>Lists all the elements that are toggled.</parenthelpsection>
+      <description>
+        Lists each command and subcommand that has been disabled.
+      </description>
+
+      <output>
+        <line id="toggle_list">The disabled commands in this guild are: {}</line>
+        <line id="no_toggles">There are no disabled commands in this guild.</line>
+      </output>
+    </command>
+  </command>
+
+</extension>

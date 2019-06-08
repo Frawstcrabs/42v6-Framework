@@ -1,0 +1,12 @@
+{
+    "owner": 0,
+    "coowners": [],
+    "invoker": "+",
+    "perms": 402779158,
+    "db_credentials": {
+        "host": "localhost",
+        "user": "42",
+        "password": "42",
+        "db": "42db"
+    }
+}
