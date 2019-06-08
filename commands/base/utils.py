@@ -126,23 +126,6 @@ async def get_member(name, ctx):
         if member is not None:
             return member
 
-    #  If we haven't returned at this point, either we have a non-specific
-    #  name or a role mention.
-    mention = role_mention.match(name)
-    if mention is not None:
-        role = discord.utils.get(guild.roles, id=int(mention.group(1)))
-        if role is not None:
-            members = role.members
-
-            if len(members) == 1:
-                return members[0]
-            elif len(members) == 0:
-                return None
-
-            ret = await _get_response_from_member_list(ctx, members)
-            return ret
-        return None
-
 
     members = [m for m in guild.members if m.name == name or m.nick == name]
 
