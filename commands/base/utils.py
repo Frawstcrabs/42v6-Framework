@@ -126,12 +126,6 @@ async def get_member(name, ctx):
         if member is not None:
             return member
 
-    #  lastly ID
-    if name.isdigit():
-        member = guild.get_member(int(name))
-        if member is not None:
-            return
-
     #  If we haven't returned at this point, either we have a non-specific
     #  name or a role mention.
     mention = role_mention.match(name)
