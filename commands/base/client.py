@@ -254,10 +254,40 @@ class Bot:
             for func in self.__after_command_functions
         ])
 
-
     # =================================================================
     # === Delegate All Stateful Object Functions                    ===
     # =================================================================
+
+    def get_channel(self, id: int):
+        """
+        Retrieve a discord channel based on its ID. If the channel does not
+        exist, return None.
+
+        :param id: ID of channel
+        :return: Channel object
+        """
+        return self._bot.get_channel(id)
+
+    def get_guild(self, id: int):
+        """
+        Retrieve a discord guild based on its ID. If the guild does not
+        exist, return None.
+
+        :param id: ID of guild
+        :return: Guild object
+        """
+        return self._bot.get_guild(id)
+
+
+    async def change_presence(self, *, activity=None, status=None, afk=False):
+        """
+        Change the bot's presence.
+
+        :param activity: discord.Activity object
+        :param status: discord.Status object
+        :param afk: Boolean of if the bot is now afk
+        """
+        await self._bot.change_presence(activity=activity, status=status, afk=afk)
 
     # === Message Objects =============================================
     @staticmethod
