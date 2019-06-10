@@ -150,6 +150,26 @@ class Context:
         self.__next_arg_len = len(self.unparsed_content) - len(new_content)
         return arg
 
+    def list_args(self, limit: int):
+        """
+        Retrieves a list of `limit' args from the command string without
+        removing them. This can be used to allow lookahead when parsing
+        commands in converters. If the number of args requested is greater
+        than the amount in the command string, the remaining places will be
+        filled with None objects.
+
+        :param limit: Number of args to return
+        :return: List of next args in command string
+        """
+        if limit <= 0:
+            raise ValueError(f"Invalid number of args: {limit}")
+        ret = []
+        temp_content = self.unparsed_content
+        for _ in range(limit-1):
+            arg, temp_content = get_next_arg(temp_content)
+            ret.append(arg)
+        return ret
+
     def remove_arg(self):
         """Remove the first arg in the command string."""
         if self.__next_arg_len is None:
