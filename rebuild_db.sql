@@ -1,11 +1,8 @@
--- reminder that dropping a table automatically drops its indexes
-
+DROP TABLE IF EXISTS invokers;
 CREATE TABLE invokers (
-    guild_id BIGINT UNSIGNED NOT NULL,
+    guild_id BIGINT UNSIGNED PRIMARY KEY,
     callstr VARCHAR(32)
 );
-CREATE INDEX invokers_index ON invokers(guild_id);
-
 DROP TABLE IF EXISTS guild_lang;
 CREATE TABLE guild_lang (
     guild_id BIGINT UNSIGNED PRIMARY KEY,
