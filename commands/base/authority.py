@@ -20,30 +20,6 @@ async def buds(ctx):
     return str(ctx.author.id) in bot.config["friends"]
 
 
-async def _patrons(member):
-    guild = bot.get_guild(149866687615729665)
-    if guild is None:
-        return False
-    member = guild.get_member(member.id)
-    if member is None:
-        return False
-
-    return 382900868195942401 in [r.id for r in member.roles]
-
-
-def _patron_features(member):
-    if isinstance(member, int):
-        member = discord.Object(member)
-    return (member.id in [bot.owner, *bot.coowners]
-            or str(member.id) in bot.config["friends"]
-            or _patrons(member))
-
-
-async def patrons(ctx: Context):
-    """Auth function to only allow users that are patrons of 42's patreon"""
-    return _patron_features(ctx.author)
-
-
 async def pm(ctx: Context):
     """Auth function to ensure the command is invoked in a DM"""
     return ctx.is_private
