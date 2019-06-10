@@ -135,7 +135,7 @@
 
     <documentation>
       Botbans or un-botbans a member to prevent them from being able to use any commands.
-      Note: This only prevents command usage, it does not stop members from interacting with 42 completely.
+      Note: This only prevents command usage, it does not stop members from interacting with the bot completely.
       They will still be picked up by autoresponses, modlog posts and other background tasks.
     </documentation>
 
@@ -154,13 +154,13 @@
     <description>
       Disables or enables commands or subcommands.
       You can specify subcommands by separating the command path with a dot (.)
-      For example `&call;toggle tag.create` will disable the &call;tag create subcommand.
+      For example `&call;toggle example.create` will disable the &call;example create subcommand.
 
       You can select multiple elements by using an asterisk (\*)
-      For example `&call;toggle tag.*` will disable all subcommands of tag, but not &call;tag itself.
+      For example `&call;toggle example.*` will disable all subcommands of example, but not &call;example itself.
 
       You can specify multiple elements at once, and they will be toggled in order
-      For example `&call;toggle tag.* tag.create tag.edit` will disable every subcommand of tag except create and edit.
+      For example `&call;toggle example.* example.create example.edit` will disable every subcommand of example except create and edit.
 
       If a command is disabled, all its subcommands will also be disabled.
       Members with the bot-mod permission can use disabled commands.
@@ -170,11 +170,11 @@
       Disables or enables commands and subcommands.
 
       The toggle command takes a list of "command path" objects, which are basically just commands, except instead of the subcommand names being separated by spaces, they're separated by dots.
-      For example, the command `&defaultcall;tag create` can be toggled with the path `tag.create`
+      For example, the command `&defaultcall;example create` can be toggled with the path `example.create`
 
       You can also use wildcards in command paths in order to affect every matching subcommand.
-      for example, the path `tag.*` will affect every subcommand of tag *without* affecting `&defaultcall;tag` itself.
-      Using a path of a single `*` will affect every command in 42. Useful for turning everything back on again.
+      for example, the path `example.*` will affect every subcommand of example *without* affecting `&defaultcall;example` itself.
+      Using a path of a single `*` will affect every command in the bot. Useful for turning everything back on again.
 
       If a command has been disabled, all its subcommands are also inaccessible.
       Users with bot-mod permissions can use disabled commands.
@@ -183,7 +183,7 @@
     <output>
       <line id="TOGGLE_PATH_error">
         The path you gave me was not one for a valid command.
-        A path should be the full command but separated with dots. e.g. `&call;tag create` would be "tag.create"
+        A path should be the full command but separated with dots. e.g. `&call;example create` would be "example.create"
       </line>
       <line id="commands_ARG_MISSING">Please specify a command to toggle. See `&call;help toggle` for more information.</line>
 
