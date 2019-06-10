@@ -165,7 +165,7 @@ class Context:
             raise ValueError(f"Invalid number of args: {limit}")
         ret = []
         temp_content = self.unparsed_content
-        for _ in range(limit-1):
+        for _ in range(limit):
             arg, temp_content = get_next_arg(temp_content)
             ret.append(arg)
         return ret
