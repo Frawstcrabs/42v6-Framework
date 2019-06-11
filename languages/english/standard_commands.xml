@@ -136,7 +136,6 @@
     <documentation>
       Botbans or un-botbans a member to prevent them from being able to use any commands.
       Note: This only prevents command usage, it does not stop members from interacting with the bot completely.
-      They will still be picked up by autoresponses, modlog posts and other background tasks.
     </documentation>
 
     <output>
