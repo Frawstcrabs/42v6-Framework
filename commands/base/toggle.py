@@ -136,4 +136,4 @@ class CommandToggle(metaclass=Singleton):
     __name__ = "toggle"
     @staticmethod
     async def __call__(ctx):
-        return await is_toggled(ctx.guild_id, ctx.command.qualified_id)
+        return not await is_toggled(ctx.guild_id, ctx.command.qualified_id)
